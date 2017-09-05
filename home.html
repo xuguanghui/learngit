@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+ <head>
+ <title></title>
+ <meta HTTP-EQUIV="pragma" CONTENT="no-cache" />
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate" />
+ <meta name='apple-mobile-web-app-capable' content='yes' />
+ <meta name='apple-mobile-web-app-status-bar-style' content='black' />
+ <meta name="viewport" content="height=pixel_value,width=pixel_value,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,target-densitydpi=device-dpi" />
+ <style>
+    body {
+        overflow: hidden;
+    }
+    *:focus {
+        outline: none;
+    }
+    .item {
+        display: inline-block;
+        margin-left: 10px;
+        width: 221px;
+        vertical-align: middle;
+    }
+    .itemImgContainer {
+        position: relative;
+        width: 221px;
+        height: 350px;
+        margin: 0 auto;
+    }
+    .itemImg {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+        width: 221px;
+        height: 350px;
+        background: transparent;
+        border: 0;
+        text-align: center;
+        box-shadow: 2px 2px 1px #666C6E;
+    }
+    .itemImg:focus {
+        border: 3px solid #03CCF9;
+        border-radius: 1px;
+        box-shadow: 0px 0px 8px 8px #74D7ED;
+        top: -2px;
+        left: -10px;
+        width: 235px;
+        height: 355px;
+        z-index: 10;
+    }
+    .itemImg img {
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+    .itemName {
+        margin-top: 15px;
+        text-align: center;
+        color: #F1FFFF;
+        font-size: 28px;
+        width: 100%;
+        overflow: hidden;
+        word-break: keep-all;
+        white-space: nowrap;
+    }
+    .itemRow {
+        width: 100%;
+        height: 350px;
+    }
+ </style>
+ </head>
+ <body>
+    <div style="position:absolute;top:0;left:0;width:1280px;height:720px;">
+        <img style="display:none" onload="imgLoad(this)" src='http://192.168.10.66:8080/anyang/test/newLocal/module/e/ea2b4661cb4f9f08198ff47835b52697.jpg'>
+    </div>
+    <div style="left:50px;top:50px;position:absolute;height:50px;color:#fff;font-size:30px;">
+        <span style="display:inline-block;"><img src="http://192.168.10.66:8080/anyang/test/samllIcon.png" style="vertical-align:middle;"> 政务信息</span>
+    </div>
+    <div style="left:0;top:180px;width:1280px;position:absolute;z-index:8;" id="mainContent">
+        <div style="position:absolute;left:80px;top:0;width:1200px;vertical-align:middle;" id="contentDiv">
+            <div class="itemRow">
+                <div class="item">
+                    <div class="itemImgContainer">
+                        <div id="item_1" class="itemImg" tabindex="1"
+                            onkeydown="" onclick="req(1079, 1)" onFocus="" onblur="">
+                            <img style="display:none" onload="imgLoad(this)" src="http://192.168.10.66:8080/anyang/test/newLocal/moduleMenu/5/56657628b87a834c8d8ef16740ec3abd.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemImgContainer">
+                        <div id="item_2" class="itemImg" tabindex="2"
+                            onkeydown="" onclick="req(1080, 2)" onFocus="" onblur="">
+                            <img style="display:none" onload="imgLoad(this)" src="http://192.168.10.66:8080/anyang/test/newLocal/moduleMenu/e/ea2b4661cb4f9f08198ff47835b52697.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemImgContainer">
+                        <div id="item_3" class="itemImg" tabindex="3"
+                            onkeydown="" onclick="req(1081, 3)" onFocus="" onblur="">
+                            <img style="display:none" onload="imgLoad(this)" src="http://192.168.10.66:8080/anyang/test/newLocal/moduleMenu/b/b3d21c3d96774906ac51cf3fe9e0c752.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script language="javascript">
+    var homeUrl = getCookie("homeUrl");
+    init();
+    function imgLoad(obj) {
+        obj.style.display = "block";
+    } 
+    function init() {
+        var partyItem = getCookie("module14Item");
+        if (partyItem && document.getElementById("item_" + partyItem)) {
+            document.getElementById("item_" + partyItem).focus();
+            document.cookie = "module14Item=" + 0;
+        } else {
+            document.getElementById("item_1").focus();
+        }
+        if (homeUrl) {
+            try{
+                Android.setOnKeyBackMode(true);
+            } catch(e) {}
+        } else {
+            try {
+                Android.setBackMode(2);
+            } catch(e) {}
+        }
+    }
+	function click_key_back(code){
+		if (code == 4 && homeUrl) {
+            try{
+                Android.setOnKeyBackMode(false);
+            } catch(e) {}
+            window.location.href = homeUrl;
+		}
+	}
+    function getCookie(name){
+        var arr = document.cookie.split("; ");
+        for (var i = 0; i < arr.length; i++) {
+            var arr2 = arr[i].split("=");
+            if(arr2[0] == name){
+                return arr2[1];
+            }
+        }
+        return "";
+    }
+	function req(id, itemIndex) {
+	    document.cookie = "module14Item=" + itemIndex;
+        window.location.href = "http://192.168.10.66:8080/anyang/test/module14/" + id + "/" + id + ".html";
+	}
+ </script>
+ </body>
+</html>
